@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json.schemastore.org/mocharc",
+    "extension":["ts"],
+    "require": ["ts-node"],
+    "loader": "ts-node/esm",
+    "spec": ["test"]
+}
