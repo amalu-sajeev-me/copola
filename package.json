@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "A project to create a platform where skilled or unskilled laborers can find jobs.",
   "main": "./dist/bin/www",
-  "type": "module",
   "scripts": {
-    "start": "node ./dist/bin/www",
-    "dev-server": "nodemon ./src/bin/www",
+    "start": "node ./dist/bin/www.js",
+    "dev-server": "nodemon ./src/bin/www.ts",
     "lint": "eslint",
     "test": "mocha"
   },
