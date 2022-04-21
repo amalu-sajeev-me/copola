@@ -6,26 +6,18 @@ const { Schema, model } = mongoose;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true,
-        lowercase: true,
-        validate: {
-            validator: (v: string) => Joi.string().alphanum().required().validate(v),
-            message: ""
-        }
     },
     password: {
         type: String,
-        required: true,
-        lowercase: true,
-        validate: {
-            validator: (v: string) => Joi.string().alphanum().required().validate(v),
-            message: ""
-        }
     },
 }, {
     timestamps: true
 });
 
-const User = model("User", userSchema);
+const userValidationSchema = Joi.object({
+    username: Joi.string().alphanum().disallow(" ").required().min(3).max(16),
+    password: Joi.string().alphanum().required().min(8).max(16)
+});
 
-export { User };
+const User = model("User", userSchema);
+export { User, userValidationSchema };

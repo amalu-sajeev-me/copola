@@ -1,13 +1,18 @@
 import { User } from "./schemas/user.schema";
 
+async function existingUser(username: string): Promise<boolean>{
+    const user = await User.exists({ username });
+
+    return !!user;
+} 
+
+
 async function createUser(userData: object) {
     const user = new User(userData);
-    try {
-        await user.save();
-        return user;
-    } catch (err: unknown) {
-        console.log(err);
-    }
+    console.log(await user.validate());
+    await user.save();
+    return user;
 }
 
-export { createUser };
+
+export { existingUser, createUser };
