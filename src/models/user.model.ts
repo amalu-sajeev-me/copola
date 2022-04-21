@@ -1,9 +1,8 @@
 import { User } from "./schemas/user.schema";
+import bcrypt from "bcrypt";
 
 async function existingUser(username: string): Promise<boolean>{
-    const user = await User.exists({ username });
-
-    return !!user;
+    return !!(await User.exists({ username }));
 } 
 
 
@@ -14,5 +13,9 @@ async function createUser(userData: object) {
     return user;
 }
 
+async function encryptPassword({ password }: { password:string }) {
+    const saltRounds = 12;
+    return await bcrypt.hash(password, saltRounds);
+}
 
-export { existingUser, createUser };
+export { existingUser, createUser, encryptPassword };
