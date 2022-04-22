@@ -12,7 +12,7 @@ const createAccount: asyncRequestHandler = async (req, res) => {
 };
 
 const accountLogin: asyncRequestHandler = async (req, res) => {
-    // 
+    res.send("hello there buddy!");
 };
 
 

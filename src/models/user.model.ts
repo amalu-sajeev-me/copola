@@ -8,9 +8,8 @@ async function existingUser(username: string): Promise<boolean>{
 
 async function createUser(userData: object) {
     const user = new User(userData);
-    console.log(await user.validate());
-    await user.save();
-    return user;
+    
+    return user.save();
 }
 
 async function encryptPassword({ password }: { password:string }) {
